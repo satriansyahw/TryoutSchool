@@ -295,6 +295,35 @@ docker-compose down && docker-compose up --build
 
 ---
 
+## 🤖 CI/CD dengan GitHub Actions
+
+Project ini sudah dilengkapi 2 workflow otomatis di `.github/workflows/`:
+
+| Workflow | File | Trigger | Fungsi |
+|---|---|---|---|
+| **CI Build & Lint** | `ci.yml` | Push ke `main`/`develop`, setiap PR | Install, lint, build check |
+| **Docker Build & Push** | `docker.yml` | Push ke `main`, tag `v*.*.*` | Build image → push ke GHCR |
+
+### Setup GitHub Secrets
+
+Tambahkan secrets di: **GitHub Repo → Settings → Secrets and variables → Actions → New repository secret**
+
+| Secret Name | Value |
+|---|---|
+| `VITE_SUPABASE_URL` | `https://xxxxxxxx.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | `eyJhbGci...` |
+| `VITE_RESEND_API_KEY` | `re_xxxxxxxxxxxx` |
+| `VITE_SUPABASE_FUNCTIONS_URL` | `https://xxxxxxxx.supabase.co/functions/v1` |
+
+### Pull image dari GHCR (setelah workflow jalan)
+
+```bash
+docker pull ghcr.io/satriansyahw/tryoutschool:main
+docker run -p 3000:80 ghcr.io/satriansyahw/tryoutschool:main
+```
+
+---
+
 ## 🔒 Keamanan (RLS Policies)
 
 | Tabel | Murid | Guru |
