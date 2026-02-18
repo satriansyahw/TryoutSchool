@@ -13,7 +13,7 @@ import ExamRoomPage from './pages/ExamRoomPage'
 // Logout page — defined outside App to avoid Rules of Hooks violation
 function LogoutPage() {
   const { signOut } = useAuthStore()
-  useEffect(() => { signOut() }, [])
+  useEffect(() => { signOut() }, [signOut])
   return <Navigate to="/login" replace />
 }
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { ArrowLeft, Plus, Save, Trash2, CheckCircle, XCircle, Loader2 } from 'lucide-react'
 
 export default function EditExamPage() {
     const { id } = useParams()
-    const navigate = useNavigate()
     const [exam, setExam] = useState(null)
     const [questions, setQuestions] = useState([])
     const [loading, setLoading] = useState(true)

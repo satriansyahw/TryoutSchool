@@ -54,7 +54,6 @@ export default function CreateExamPage() {
 
         const now = new Date()
         const day = String(now.getDate()).padStart(2, '0')
-        const month = String(now.getMonth() + 1).padStart(2, '0')
         const hour = String(now.getHours()).padStart(2, '0')
         const minute = String(now.getMinutes()).padStart(2, '0')
         const second = String(now.getSeconds()).padStart(2, '0')
@@ -115,8 +114,6 @@ export default function CreateExamPage() {
             if (error) throw error
 
             alert(`Exam Created! Access Code: ${generatedCode}`)
-
-            const newExamId = data[0].id
             navigate('/dashboard')
 
         } catch (error) {
